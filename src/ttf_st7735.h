@@ -56,9 +56,9 @@ private:
      * 0xFE | 1  1  1  1  1  1  1  0 --> Mirror X and Y, swap R and B channels
      *
      */
-    static const uint8_t MADCTL  = 0xFE;    // display control;
+    static const uint8_t MADCTL  = 0b00110110;    // display control;
 
-    static const uint8_t COLMOD  = 0x3A;    // color mode;
+    static const uint8_t COLMOD  = 0x3A;          // color mode;
 
     // 1.8" TFT display constants
     static const uint8_t XSIZE = 128;

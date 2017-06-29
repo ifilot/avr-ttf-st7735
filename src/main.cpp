@@ -28,11 +28,13 @@
 void setup_ports() {
     DDRB = 0x2F;        // 0010.1111; set B0-B3, B5 as outputs
     DDRC = 0x00;        // 0000.0000; set PORTC as inputs
+    DDRD = 0b00000011;
     PORTB |= (1 << 0);  // start with TFT reset line inactive high
 }
 
 int main() {
     setup_ports(); // use PortB for LCD interface
+    PORTD |= (1 << 0);	// boot program indicator on PIND0
     TTF_ST7735 ttf;
     ttf.clear_screen();
 
@@ -49,5 +51,13 @@ int main() {
         ttf.draw_text(colors[i].get_hexcode(), 10, y, colors[i]);
         ttf.draw_rectangle_solid(0,y,7,7,colors[i]);
         y += 7;
+    }
+
+    // blinking led on PIND1
+    while(1) {
+        PORTD |= (1 << 1);
+        _delay_ms(500);
+        PORTD &= ~(1 << 1);
+        _delay_ms(500);
     }
 }
