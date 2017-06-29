@@ -38,7 +38,26 @@ private:
     static const uint8_t CASET   = 0x2A;    // column address set;
     static const uint8_t RASET   = 0x2B;    // row address set;
     static const uint8_t RAMWR   = 0x2C;    // RAM write;
-    static const uint8_t MADCTL  = 0x36;    // axis control;
+
+    /*
+     * MADCTL determines how the display operates
+     *
+     * MY : Row address order
+     * MX : Column address order
+     * MV : Row/Column exchange
+     * ML : Scan address order
+     * RB : RGB / BGR order
+     * MH : Horizontal order
+     * D1 : Not used
+     * D0 : Not used
+     *
+     *        MY MX MV ML RB MH D1 D0
+     * 0x36 | 0  0  1  1  0  1  1  0 --> Regular display, regular RGB
+     * 0xFE | 1  1  1  1  1  1  1  0 --> Mirror X and Y, swap R and B channels
+     *
+     */
+    static const uint8_t MADCTL  = 0xFE;    // display control;
+
     static const uint8_t COLMOD  = 0x3A;    // color mode;
 
     // 1.8" TFT display constants
@@ -75,6 +94,7 @@ public:
 
     void clear_screen();
     void random_pixel_test();
+    void draw_rectangle_solid(uint8_t x0, uint8_t y0, uint8_t dx, uint8_t dy, const Color& color);
     void draw_text(const char* txt, uint8_t x, uint8_t y, const Color& color);
     void draw_char(char ch, uint8_t x, uint8_t y, const Color& color);
 

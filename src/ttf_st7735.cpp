@@ -35,6 +35,11 @@ void TTF_ST7735::random_pixel_test() {
     }
 }
 
+void TTF_ST7735::draw_rectangle_solid(uint8_t x0, uint8_t y0, uint8_t dx, uint8_t dy, const Color& color) {
+    this->set_addr_window(x0, y0, x0 + dx - 1, y0 + dy - 1);
+    this->write_16bit_pixels(color.get_cc565(), dx * dy);
+}
+
 void TTF_ST7735::draw_text(const char* txt, uint8_t x, uint8_t y, const Color& color) {
     int i = 0;
     char c = txt[i];

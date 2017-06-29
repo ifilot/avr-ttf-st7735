@@ -12,9 +12,10 @@ OPTS = -Os
 # set dirs
 OBJDIR = obj
 SRCDIR = src
+STL_INCDIR = /opt/avr-stl/include
 
 # update the lines below to match your configuration
-CFLAGS = -Wall $(OPTS) -mmcu=atmega328p -DF_CPU=$(F_CPU) -DDEBUG_LEVEL=0 -std=c++11 -I$(SRCDIR)
+CFLAGS = -Wall $(OPTS) -mmcu=atmega328p -DF_CPU=$(F_CPU) -DDEBUG_LEVEL=0 -std=c++11 -I$(SRCDIR) -I$(STL_INCDIR)
 OBJFLAGS = -j .text -j .data -O ihex
 DUDEFLAGS = -p atmega328p -c usbasp
 
