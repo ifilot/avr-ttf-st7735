@@ -58,8 +58,15 @@ private:
     static const uint16_t YELLOW  = 0xFFE0;
     static const uint16_t WHITE   = 0xFFFF;
 
-    uint8_t colstart = 2;
-    uint8_t rowstart = 1;
+    /*
+     * these are offsets; some displays show random pixels when these are set to zero
+     * if you see for instance one column and two rows that show randomnly colored
+     * pixels, than colstart = 1 and rowstart = 2.
+     *
+     * Default values are 0 and most displays work out-of-the-box with 0
+     */
+    uint8_t colstart = 0;
+    uint8_t rowstart = 0;
 
     SPI spi;
 
