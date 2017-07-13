@@ -80,12 +80,12 @@ private:
     /*
      * these are offsets; some displays show random pixels when these are set to zero
      * if you see for instance one column and two rows that show randomnly colored
-     * pixels, than colstart = 1 and rowstart = 2.
+     * pixels, than colstart = 2 and rowstart = 1.
      *
      * Default values are 0 and most displays work out-of-the-box with 0
      */
-    uint8_t colstart = 0;
-    uint8_t rowstart = 0;
+    uint8_t colstart = 2;
+    uint8_t rowstart = 1;
 
     SPI spi;
 

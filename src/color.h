@@ -34,6 +34,8 @@ private:
     uint16_t cc565;
 
 public:
+    Color();
+
     Color(const char* hex);
 
     Color(uint16_t _cc565);

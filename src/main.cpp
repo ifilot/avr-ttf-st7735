@@ -20,8 +20,6 @@
  **************************************************************************/
 
 #include <avr/io.h>
-#include <vector>
-#include <pnew.cpp>
 
 #include "ttf_st7735.h"
 
@@ -38,7 +36,7 @@ int main() {
     TTF_ST7735 ttf;
     ttf.clear_screen();
 
-    std::vector<Color> colors(5, Color("000000"));
+    Color colors[5];
 
     colors[0] = Color("EC4E20");
     colors[1] = Color("00FF00");
@@ -47,7 +45,7 @@ int main() {
     colors[4] = Color("353531");
 
     uint8_t y = 0;
-    for(unsigned int i=0; i<colors.size(); i++) {
+    for(unsigned int i=0; i<5; i++) {
         ttf.draw_text(colors[i].get_hexcode(), 10, y, colors[i]);
         ttf.draw_rectangle_solid(0,y,7,7,colors[i]);
         y += 7;

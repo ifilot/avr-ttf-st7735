@@ -21,6 +21,12 @@
 
 #include "color.h"
 
+Color::Color() {
+    this->r = 0;
+    this->g = 0;
+    this->b = 0;
+}
+
 Color::Color(const char* hex) {
     for(int i=0; i<6; i++) {
         this->hexcode[i] = hex[i];
